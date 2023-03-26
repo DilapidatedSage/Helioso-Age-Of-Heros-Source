@@ -10,6 +10,9 @@ Made By Sage#8437
 Open Source   
 I love you 😘
 Age-Of-Heros
+
+loadstring(game:HttpGet("https://github.com/DilapidatedSage/Helioso-Age-Of-Heros-Source/blob/main/Helioso-AOH.txt"))();
+
 ]]--
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))();
