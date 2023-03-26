@@ -9,11 +9,11 @@
 Made By Sage#8437                                                  
 Open Source   
 I love you 😘
-
+Age-Of-Heros
 ]]--
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))();
-local Window = Library.CreateLib("Helioso - Age Of Heros", "BloodTheme");
+local Window = Library.CreateLib("Helioso - Age Of Heros", "Ocean");
 local Tab = Window:NewTab("AutoFarm Menu");
 local MainSection = Tab:NewSection("AutoFarm Menu");
 local TargetTab = Window:NewTab("Player Menu");
