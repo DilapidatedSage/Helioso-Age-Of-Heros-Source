@@ -11,7 +11,7 @@ Open Source
 I love you 😘
 Age-Of-Heros
 
-loadstring(game:HttpGet("https://github.com/DilapidatedSage/Helioso-Age-Of-Heros-Source/blob/main/Helioso-AOH.txt"))();
+loadstring(game:HttpGet("https://raw.githubusercontent.com/DilapidatedSage/Helioso-Age-Of-Heros-Source/main/Helioso-AOH.txt"))();
 
 ]]--
 
