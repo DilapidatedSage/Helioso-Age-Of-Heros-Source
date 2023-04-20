@@ -10,11 +10,8 @@ Made By Sage#8437
 Open Source   
 I love you 😘
 Age-Of-Heros
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/DilapidatedSage/Helioso-Age-Of-Heros-Source/main/Helioso-AOH.txt"))();
---Kinda laggy ^^^^^
-
 ]]--
+
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))();
 local Window = Library.CreateLib("Helioso - Age Of Heros", "Ocean");
@@ -90,24 +87,14 @@ GetList = function()
 		table.insert(dropdown, PLR);
 	end
 end;
-GetList();
-local plrslc = TSection:NewDropdown("Select Player", "", dropdown, function(currentOption)
-	spawn(function()
-		_G.teleportplayer = currentOption;
-	end);
+TSection:NewDropdown("Safezone Locations", "", {"Bar","Building Park","City Square","Evil Lair","Feild","Hero HQ","Hero Lair","Motel","Mountain","Mountain-2","Park","Plains","Prison"}, function(currentOption)
+	_G.selectedstat = currentOption;
 end);
-TSection:NewButton("Refresh Dropdown", "", function()
-	spawn(function()
-		GetList();
-		plrslc:Refresh(dropdown);
-	end);
+TSection:NewDropdown("Other Locations", "", {"Contruction Building","Corner-1","Corner-2","Corner-3","Corner-4","Ignite Tower","Military Base","Mountain Hole","Police Department","Cave"}, function(currentOption)
+	_G.selectedstat = currentOption;
 end);
-TSection:NewButton("Goto Player", "", function()
-	spawn(function()
-		local p1 = game.Players.LocalPlayer.Character.HumanoidRootPart;
-		p1.CFrame = game.Players[_G.teleportplayer].Character.HumanoidRootPart.CFrame;
-		breakvelocity();
-	end);
+TSection:NewDropdown("Unfortunate Locations", "", {"Unfortunate Spot (Secret Area)","Unfortunate Spot (Trap)","Unfortunate Spot (Space)","Unfortunate Spot (Under Map)","Unfortunate Spot (Dead End)","Unfortunate Spot (Box)","Unfortunate Spot (Arena)","Unfortunate Spot (Backrooms)","Unfortunate Spot (Sex Dungeon)"}, function(currentOption)
+	_G.selectedstat = currentOption;
 end);
 TSection:NewToggle("Teleport Player", "", function(state)
 	if state then
@@ -116,302 +103,389 @@ TSection:NewToggle("Teleport Player", "", function(state)
 		_G.bring = false;
 	end
 end);
-TSection:NewButton("Bar", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(-1313, 197, 149);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1313, 197, 149);
-		breakvelocity();
+TSection:NewButton("Teleport", "", function()
+	getNearPlayer(99);
+	if (_G.selectedstat == "Bar") then
+		if (_G.bring == true) then
+			getNearPlayer(99);
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(-1313, 197, 149);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1313, 197, 149);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Building Park") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(-1751, 442, 1266);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1751, 442, 1266);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "City Square") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(-385, 86, 256);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-385, 86, 256);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Evil Lair") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(-905, 94, -1086);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-905, 94, -1086);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Feild") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(2355, 81, 4);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2355, 81, 4);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Hero HQ") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(259, 169, 2748);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(259, 169, 2748);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Hero Lair") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(2351, 39, -1855);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2351, 39, -1855);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Motel") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(-1750, 94, -1349);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1750, 94, -1349);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Mountain") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(-2206, 817, -2425);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2206, 817, -2425);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Mountain-2") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(-2429, 762, -2363);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2429, 762, -2363);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Park") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(1399, 94, 1154);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1399, 94, 1154);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Plains") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(-3683, 97, -144);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3683, 97, -144);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Prison") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(-779, 269, -2594);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-779, 269, -2594);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Contruction Building") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(650, 779, 284);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(650, 779, 284);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Corner-1") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(2773, 96, -4996);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2773, 96, -4996);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Corner-2") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(-3757, 97, -3801);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3757, 97, -3801);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Corner-3") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(-3650, 97, 2764);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3650, 97, 2764);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Corner-4") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(2810, 102, 2821);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2810, 102, 2821);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Ignite Tower") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(-70, 616, -247);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-70, 616, -247);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Military Base") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(259, 99, -4639);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(259, 99, -4639);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Mountain Hole") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(-2732, 256, -1776);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2732, 256, -1776);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Police Department") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(-62, 94, -480);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-62, 94, -480);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Cave") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(269, -59, 2729);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(269, -59, 2729);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Unfortunate Spot (Secret Area)") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(-1100, 61, -1169);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1100, 61, -1169);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Unfortunate Spot (Trap)") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(-790, 135, -2769);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-790, 135, -2769);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Unfortunate Spot (Space)") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(0, 9999999, 0);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0, 9999999, 0);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Unfortunate Spot (Under Map)") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(0, 0, 0);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0, 0, 0);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Unfortunate Spot (Dead End)") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(1453, 98, -2506);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1453, 98, -2506);
+			breakvelocity();
+		end
+	elseif (_G.selectedstat == "Unfortunate Spot (Box)") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(-1695, 94, -1309);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1695, 94, -1309);
+		end
+	elseif (_G.selectedstat == "Unfortunate Spot (Arena)") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(-1728, 94, -1188);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1728, 94, -1188);
+		end
+	elseif (_G.selectedstat == "Unfortunate Spot (Backrooms)") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(-1519, 95, -1072);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1519, 95, -1072);
+		end
+	elseif (_G.selectedstat == "Unfortunate Spot (Sex Dungeon)") then
+		if (_G.bring == true) then
+			for i, v in pairs(plrlist) do
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.telekinesisPosition:Destroy();
+				game:GetService("Workspace")[v.Name].HumanoidRootPart.CFrame = CFrame.new(-1585, 95, -1159);
+				wait(0.2);
+				game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[v.Name].Character);
+			end
+		else
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1585, 95, -1159);
+		end
 	end
-end);
-TSection:NewButton("Building Park", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(-1749, 789, 1269);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1749, 789, 1269);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("City Square", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(-385, 86, 256);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-385, 86, 256);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Contruction Building", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(650, 779, 284);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(650, 779, 284);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Corner 1", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(2773, 96, -4996);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2773, 96, -4996);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Corner 2", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(-3757, 97, -3801);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3757, 97, -3801);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Corner 3", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(-3650, 97, 2764);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3650, 97, 2764);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Corner 4", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(2810, 102, 2821);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2810, 102, 2821);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Evil Lair", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(-905, 94, -1086);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-905, 94, -1086);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Feild", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(2355, 81, 4);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2355, 81, 4);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Hero HQ", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(259, 169, 2748);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(259, 169, 2748);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Hero Lair", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(1880, 104, -1694);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1880, 104, -1694);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Ignite Tower", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(-70, 616, -247);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-70, 616, -247);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Military base", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(259, 99, -4639);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(259, 99, -4639);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Motel", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(-1750, 94, -1349);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1750, 94, -1349);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Mountain", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(-2206, 817, -2425);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2206, 817, -2425);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Mountain 2", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(-2429, 762, -2363);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2429, 762, -2363);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Mountain Hole", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(-2732, 256, -1776);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2732, 256, -1776);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Park", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(1399, 94, 1154);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1399, 94, 1154);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Plains", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(-3683, 97, -144);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3683, 97, -144);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Police Station", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(-62, 94, -480);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-62, 94, -480);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Prison", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(-779, 269, -2594);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-779, 269, -2594);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Secret Area", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(-1100, 61, -1169);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1100, 61, -1169);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Secret Cave", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(269, -59, 2729);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(269, -59, 2729);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Unfortunate Spot (Trap)", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(-790, 135, -2769);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-790, 135, -2769);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Unfortunate Spot (Space)", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(0, 9999999, 0);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0, 9999999, 0);
-		breakvelocity();
-	end
-end);
-TSection:NewButton("Unfortunate Spot 3 (Under map)", "", function()
-	if (_G.bring == true) then
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.telekinesisPosition:Destroy();
-		game:GetService("Workspace")[_G.teleportplayer].HumanoidRootPart.CFrame = CFrame.new(0, 0, 0);
-		wait(0.2);
-		game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(Vector3.new(1, 1, 1), false, game.Players[_G.teleportplayer].Character);
-	else
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0, 0, 0);
-		breakvelocity();
-	end
+	plrlist = {};
 end);
 StatSection:NewDropdown("AutoStats", "", {"vitality","healing","strength","energy","flight","speed","climbing","swinging","fireball","frost","lightning","power","telekinesis","shield","laserVision","metalSkin"}, function(currentOption)
 	selectedstat = currentOption;
@@ -422,6 +496,10 @@ StatSection:NewToggle("Toggle AutoStats", "", function(state)
 		while AutoStats do
 			wait(0.1);
 			spawn(function()
+				game:GetService("ReplicatedStorage").Events.UpgradeAbility:InvokeServer(selectedstat);
+				game:GetService("ReplicatedStorage").Events.UpgradeAbility:InvokeServer(selectedstat);
+				game:GetService("ReplicatedStorage").Events.UpgradeAbility:InvokeServer(selectedstat);
+				game:GetService("ReplicatedStorage").Events.UpgradeAbility:InvokeServer(selectedstat);
 				game:GetService("ReplicatedStorage").Events.UpgradeAbility:InvokeServer(selectedstat);
 			end);
 		end
@@ -1358,7 +1436,7 @@ TargetSection:NewButton("Remove Gyro", "", function()
 	game:GetService("Workspace")[_G.tplayer].HumanoidRootPart.telekinesisGyro:Destroy();
 	game:GetService("Workspace")[_G.tplayer].HumanoidRootPart.telekinesisPosition:Destroy();
 	game:GetService("Workspace")[_G.tplayer].Humanoid.PlatformStand = false;
-	game:GetService("Workspace")[_G.tplayer].Humanoid.WalkSpeed = 150;
+	game:GetService("Workspace")[_G.tplayer].Humanoid.WalkSpeed = 200;
 	game:GetService("Workspace")[_G.tplayer].Humanoid.JumpPower = 150;
 end);
 TargetSection:NewToggle("Disable Telekinesis", "", function(state)
