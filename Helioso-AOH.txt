@@ -34,6 +34,7 @@ _G.metalskin = false;
 _G.LOCALPLAYER = game.Players.LocalPlayer.Name;
 _G.bring = false;
 player = game.Players.LocalPlayer;
+game:GetService("Players").LocalPlayer.DevEnableMouseLock = true
 breakvelocity = function()
 	spawn(function()
 		local BeenASecond, V3 = false, Vector3.new(0, 0, 0);
